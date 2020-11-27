@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Header from './components/Header/index';
 import Home from './components/Home/index';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
@@ -10,7 +10,7 @@ import { useStateValue } from './components/StateProvider';
 
 function App() {
   const [{ basket }, dispatch] = useStateValue();
-  const [basketItem, setBasketItem] = useState({})
+
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
       if (authUser) {
@@ -37,14 +37,13 @@ function App() {
   },[basket])
   
   const SaveProductToBasket = () => {
-    const loadCart=JSON.parse(localStorage.getItem('cart'))
-    if (basket.length != 0) {
+    if (basket.length !== 0) {
       basket.map((item) => {
         cart.push(item)
       })
       localStorage.setItem("cart", JSON.stringify(cart));
     }
-  //  console.log(loadCart.length)
+  
 
   }
   return (

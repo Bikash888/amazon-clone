@@ -15,13 +15,8 @@ const Header = () => {
        auth.signOut();
       }
   }
-  let cart=[]
-  useEffect(()=>{
-      cart=JSON.parse(localStorage.getItem("cart"));
-     setCount(cart.length)
-    //  console.log("count----->>>>>>---->>>>",count)
 
-  })
+ 
     return (
         <div className="header">
             <Link to="/">
@@ -54,7 +49,7 @@ const Header = () => {
                 <Link to="/checkout">
                     <div className="header_basket_option">
                         <ShoppingBasketIcon />
-                        <span className="header_option_one header_basketCount">{count}</span>
+                        <span className="header_option_one header_basketCount">{basket.length}</span>
                     </div>
                 </Link>
 
