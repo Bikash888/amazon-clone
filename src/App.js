@@ -6,13 +6,9 @@ import Checkout from './components/Checkout';
 import Login from './components/Login';
 import { auth } from './firebase'
 import { useStateValue } from './components/StateProvider';
-import ReactGA from 'react-ga';
 
 
-ReactGA.initialize('G-DQRQQPPNEK')
-useEffect(()=>{
-  ReactGA.pageview(window.location.pathname + window.location.search);
-})
+
 
 function App() {
   const [{ basket }, dispatch] = useStateValue();

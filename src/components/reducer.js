@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+
 export const initialState = {
     basket: JSON.parse(localStorage.getItem('cart')) || [],
     user: null,
@@ -18,13 +18,15 @@ const reducer = (state, action) => {
         case "REMOVE_FROM_BASKET":
             const index = state.basket.findIndex((basketItem) => basketItem.id === action.id);
             let newBasket = [...state.basket];
-            console.log("index==",index)
+            
             if (index >=0) {
                 
                 newBasket.splice(index, 1)
+                console.log("index==",newBasket)
+                localStorage.setItem('cart',JSON.stringify(newBasket))
             } else {
-                let cart=[]
-                localStorage.setItem('cart',JSON.stringify([]))
+              
+                
                 console.warn("Product " + action.id + " not found")
             }
             return {
